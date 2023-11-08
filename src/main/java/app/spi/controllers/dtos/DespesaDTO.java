@@ -1,35 +1,23 @@
-package app.spi.models;
+package app.spi.controllers.dtos;
 
-import app.spi.controllers.dtos.DespesaDTO;
+import app.spi.models.Despesa;
 import app.spi.models.enums.TipoDespesa;
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Entity
-public class Despesa {
+public class DespesaDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Size(max = 30)
     private String nome;
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private TipoDespesa tipo;
+    @NotNull
     private Double valor;
 
-    public Despesa() {
-    }
-
-    public Despesa(Long id, String nome, TipoDespesa tipo, Double valor) {
-        this.id = id;
-        this.nome = nome;
-        this.tipo = tipo;
-        this.valor = valor;
-    }
-
-    public Despesa(DespesaDTO objDTO) {
-        this.id = objDTO.getId();
-        this.nome = objDTO.getNome();
-        this.tipo = objDTO.getTipo();
-        this.valor = objDTO.getValor();
+    public DespesaDTO() {
     }
 
     public Long getId() {
@@ -62,5 +50,12 @@ public class Despesa {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public DespesaDTO(Despesa obj) {
+        this.id = obj.getId();
+        this.nome = obj.getNome();
+        this.tipo = obj.getTipo();
+        this.valor = obj.getValor();
     }
 }

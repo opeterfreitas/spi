@@ -21,7 +21,7 @@ public class EmbalagemDTO {
     @NotNull
     private UnidadeDeMedida unidadeDeMedida;
     @NotNull
-    private double custo;
+    private Double custo;
 
     public EmbalagemDTO() {
     }
@@ -66,11 +66,11 @@ public class EmbalagemDTO {
         this.unidadeDeMedida = unidadeDeMedida;
     }
 
-    public double getCusto() {
+    public Double getCusto() {
         return custo;
     }
 
-    public void setCusto(double custo) {
+    public void setCusto(Double custo) {
         this.custo = custo;
     }
 
